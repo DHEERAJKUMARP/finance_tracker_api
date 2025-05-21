@@ -1,21 +1,22 @@
-# POST /users/register
+from fastapi import APIRouter, Body
 
-# POST /users/login
+router = APIRouter(
+    prefix="/users",
+    tags=["User Management"]
+)
 
-# POST /users/set-pin
+@router.post("/register")
+async def register_user(user_data: dict = Body(...)):
+    pass
 
-# POST /users/set-biometric
+@router.post("/login")
+async def login_user(credentials: dict = Body(...)):
+    pass
 
-# POST /notifications/settings
+@router.post("/set-pin")
+async def set_pin(data: dict = Body(...)):
+    pass
 
-# GET /notifications/
-
-# GET /notifications/budget-alerts
-
-# GET /settings/
-
-# PUT /settings/
-
-# POST /profiles/
-
-# GET /profiles/
+@router.post("/set-biometric")
+async def set_biometric(data: dict = Body(...)):
+    pass

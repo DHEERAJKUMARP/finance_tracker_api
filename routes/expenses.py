@@ -1,17 +1,38 @@
-# POST /expenses/
+from fastapi import APIRouter, Body, Path, Query
 
-# GET /expenses/
+router = APIRouter(
+    prefix="/expenses",
+    tags=["Expenses"]
+)
 
-# GET /expenses/{id}
+@router.post("/")
+async def create_expense(data: dict = Body(...)):
+    pass
 
-# PUT /expenses/{id}
+@router.get("/")
+async def get_expenses(month: str = Query(None, description="Filter expenses by month YYYY-MM")):
+    pass
 
-# DELETE /expenses/{id}
+@router.get("/{id}")
+async def get_expense(id: int = Path(...)):
+    pass
 
-# POST /expenses/{id}/attach-receipt
+@router.put("/{id}")
+async def update_expense(id: int = Path(...), data: dict = Body(...)):
+    pass
 
-# POST /expenses/{id}/set-recurring
+@router.delete("/{id}")
+async def delete_expense(id: int = Path(...)):
+    pass
 
-# GET /expenses?month=YYYY-MM
+@router.post("/{id}/attach-receipt")
+async def attach_receipt(id: int = Path(...), data: dict = Body(...)):
+    pass
 
-# GET /expenses/summary-by-category
+@router.post("/{id}/set-recurring")
+async def set_recurring_expense(id: int = Path(...), data: dict = Body(...)):
+    pass
+
+@router.get("/summary-by-category")
+async def get_expense_summary_by_category():
+    pass
